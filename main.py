@@ -40,6 +40,7 @@ async def work_hour_start(message: types.message):
 
 
 @dp.message_handler()
+# чтобы работала в чатах - сделай бота админом!
 async def censor_send(message: types.Message):
     if {i.lower().translate(str.maketrans('', '', string.punctuation)) for i in message.text.split(' ')} \
             .intersection(set(json.load(open('cenz.json')))):
