@@ -1,7 +1,9 @@
+import json
+import string
+
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-import json, string
 
 TOKEN = "5732215283:AAEK4rDutfCc6OPsXZZPFGw0CEITWTV5UiE"
 bot = Bot(token=TOKEN)
@@ -40,7 +42,7 @@ async def work_hour_start(message: types.message):
 
 
 @dp.message_handler()
-# чтобы работала в чатах - сделай бота админом!
+# чтобы цензор работал в чатах - сделай бота админом!
 async def censor_send(message: types.Message):
     if {i.lower().translate(str.maketrans('', '', string.punctuation)) for i in message.text.split(' ')} \
             .intersection(set(json.load(open('cenz.json')))):
