@@ -37,7 +37,8 @@ async def work_hour_start(message: types.message):
 
 
 """ Админская часть """
-
+def ads():
+    pass
 """ Общая часть """
 
 
