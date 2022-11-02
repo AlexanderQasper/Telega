@@ -1,5 +1,4 @@
 from config import *
-from aiogram import Dispatcher
 from keyboards import kb_client
 
 # Если всё в одном файле, то через декоратор можно отлавливать команды
