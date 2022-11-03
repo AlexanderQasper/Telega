@@ -1,6 +1,6 @@
 from config import *
 from keyboards import kb_client
-from database import
+from database import sqlite_db
 
 # Если всё в одном файле, то через декоратор можно отлавливать команды
 # @dp.message_handler(commands=['start', 'help'])
@@ -21,9 +21,9 @@ async def place(message: types.message):
 async def work_hour(message: types.message):
     await message.reply("Пн.8-12 \n Вт. 8-13 \n Ср. 9-16 \n Чт. 10-14 \n Пт. 12-18")
 
-async def pizza_menu_command(message : types.Message):
-    for ret in cur.execute('SELECT * FROM menu').fetchall():
-        await bot.send_photo(message.from_user.id, ret[0], f'{ret[1]} \n Описание: {ret[2]}\n Цена {ret[-1]}')
+# async def pizza_menu_command(message : types.Message):
+#     for ret in cur.execute('SELECT * FROM menu').fetchall():
+#         await bot.send_photo(message.from_user.id, ret[0], f'{ret[1]} \n Описание: {ret[2]}\n Цена {ret[-1]}')
 
 
 def register_handlers_client(dp : Dispatcher):

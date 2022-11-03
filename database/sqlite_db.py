@@ -1,10 +1,10 @@
 import sqlite3 as sq
 
-base = sq.connect('pizza_cool.db')
-cur = base.cursor()
 
 def sql_start():
     global base, cur
+    base = sq.connect('pizza_cool.db')
+    cur = base.cursor()
     if base:
         print('Sql DB starts!')
     base.execute('CREATE TABLE IF NOT EXISTS menu(img TEXT, name TEXT PRIMARY KEY, description TEXT, price TEXT)')
