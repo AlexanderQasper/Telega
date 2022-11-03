@@ -30,12 +30,14 @@ async def cm_start(message: types.Message):
         await FSMAdmin.photo.set()
         await message.reply('Загрузи фото')
 
+
 async def cancel_handler(message: types.Message, state: FSMContext):
     current_state = await state.get_state()
     if current_state is None:
         return
     await state.finish()
     await message.reply('Ок, отмена')
+
 
 async def load_photo(message: types.Message, state: FSMContext):
     if message.from_user.id == ID:
@@ -73,7 +75,6 @@ async def load_price(message: types.Message, state: FSMContext):
         await state.finish()
 
 
-
 @dp.message_handler(commands='Удалить')
 async def delete_item(message: types.Message):
     if message.from_user.id == ID:
@@ -88,6 +89,7 @@ async def delete_item(message: types.Message):
 async def del_callback_run(callback_query: types.CallbackQuery):
     await sqlite_db.sql_delete_command(callback_query.data.replace('del ', ''))
     await callback_query.answer(text=f'{callback_query.data.replace("del ", "")} удалена.', show_alert=True)
+
 
 async def empty(message: types.Message):
     await message.answer('Нет такой команды')
