@@ -1,5 +1,5 @@
-from config import bot
 import sqlite3 as sq
+from config import bot
 
 
 def sql_start():
@@ -19,3 +19,10 @@ async def sql_add_command(state):
 async def sql_read(message):
     for ret in cur.execute('SELECT * FROM menu').fetchall():
         await bot.send_photo(message.from_user.id, ret[0], f'{ret[1]} \n Описание: {ret[2]}\n Цена {ret[-1]}')
+
+async def sql_read2():
+    return cur.execute('SELECT * FROM menu').fetchall()
+
+async def sql_delete_command(data):
+    cur.execute('DELETE FROM menu WHERE name == ?', (data,))
+    base.commit()

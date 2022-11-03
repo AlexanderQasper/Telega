@@ -10,4 +10,4 @@ b5 = KeyboardButton('Отправить где я', request_location=True)
 kb_client = ReplyKeyboardMarkup(resize_keyboard=True)
 
 #kb_client.row(b1, b2, b3) Всё в одну строку
-kb_client.add(b1).insert(b2).add(b3)#.row(b4, b5)
+kb_client.add(b1).insert(b2).add(b3).row(b4, b5)
