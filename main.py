@@ -1,5 +1,5 @@
 from aiogram.utils import executor
-from config import *
+from config import dp
 from handlers import client, admin, other
 from database import sqlite_db
 async def on_start_up(_):

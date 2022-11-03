@@ -1,8 +1,8 @@
 from aiogram import types, Dispatcher
-from config import dp, bot
-from keyboards import kb_client
-from database import sqlite_db
 
+from config import bot
+from database import sqlite_db
+from keyboards import kb_client
 
 
 # Если всё в одном файле, то через декоратор можно отлавливать команды
@@ -24,12 +24,13 @@ async def place(message: types.message):
 async def work_hour(message: types.message):
     await message.reply("Пн.8-12 \n Вт. 8-13 \n Ср. 9-16 \n Чт. 10-14 \n Пт. 12-18")
 
-async def pizza_menu_command(message : types.Message):
+
+async def pizza_menu_command(message: types.Message):
     await sqlite_db.sql_read(message)
 
 
-def register_handlers_client(dp : Dispatcher):
-    dp.register_message_handler(command_start, commands = ['start', 'help'])
-    dp.register_message_handler(place, commands=['Расположение'] )
+def register_handlers_client(dp: Dispatcher):
+    dp.register_message_handler(command_start, commands=['start', 'help'])
+    dp.register_message_handler(place, commands=['Расположение'])
     dp.register_message_handler(work_hour, commands=['Время'])
     dp.register_message_handler(pizza_menu_command, commands=['Меню'])

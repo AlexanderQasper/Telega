@@ -1,7 +1,7 @@
 import json
 import string
 
-from config import *
+from config import types
 from aiogram import Dispatcher
 
 
